@@ -1,0 +1,5 @@
+requests>=2.31,<3
+beautifulsoup4>=4.12,<5
+feedparser>=6.0,<7
+pyotp>=2.9,<3
+python-dotenv>=1.0,<2

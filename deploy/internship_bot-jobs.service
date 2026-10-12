@@ -1,0 +1,18 @@
+[Unit]
+Description=internship_bot jobs monitor (single run — triggered by internship_bot-jobs.timer)
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=YOUR_APP_PATH/v2/.env
+
+[Service]
+Type=oneshot
+User=YOUR_LINUX_USERNAME
+WorkingDirectory=YOUR_APP_PATH/v2
+Environment=LANG=C.UTF-8 LC_ALL=C.UTF-8
+EnvironmentFile=YOUR_APP_PATH/v2/.env
+ExecStart=YOUR_APP_PATH/venv/bin/python3 -u YOUR_APP_PATH/v2/jobs_watcher.py
+TimeoutStartSec=3min
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full

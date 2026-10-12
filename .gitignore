@@ -1,0 +1,15 @@
+# Secrets and runtime state: never commit or copy these from a development host.
+v2/.env
+v2/*.pkl
+v2/*_token.json
+v2/seen.json
+v2/subscribers.json
+v2/history.json
+v2/telegram_offset.json
+v2/pending_deliveries.json
+v2/login_backoff.json
+v2/*.lock
+v2/__pycache__/
+
+# Local deployment credentials
+deploy/.env

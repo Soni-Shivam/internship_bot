@@ -1,0 +1,26 @@
+[Unit]
+Description=internship_bot blog monitor (Telegram daemon)
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=YOUR_APP_PATH/v2/.env
+# Limit restarts if an invalid configuration causes an immediate crash.
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=YOUR_LINUX_USERNAME
+WorkingDirectory=YOUR_APP_PATH/v2
+Environment=LANG=C.UTF-8 LC_ALL=C.UTF-8
+EnvironmentFile=YOUR_APP_PATH/v2/.env
+ExecStart=YOUR_APP_PATH/venv/bin/python3 -u YOUR_APP_PATH/v2/watcher.py --daemon
+Restart=always
+RestartSec=10
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
